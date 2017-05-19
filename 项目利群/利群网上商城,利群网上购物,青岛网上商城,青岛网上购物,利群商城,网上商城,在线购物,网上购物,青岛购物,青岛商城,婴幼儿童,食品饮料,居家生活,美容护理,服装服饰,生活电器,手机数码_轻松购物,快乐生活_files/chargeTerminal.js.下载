@@ -1,0 +1,62 @@
+﻿var os_mobile = new Array("iPhone", "iPod", "iPad", "android", "Nokia", "Linux aarch64", "SymbianOS", "Symbian", "Windows Phone", "Phone", "Linux armv7l", "MAUI", "UNTRUSTED/1.0", "Windows CE", "BlackBerry", "IEMobile");
+function chargeTerminal() {
+    if (IsMobile() && document.location.href.toLowerCase().indexOf('m.liqunshop.com') == -1 && document.location.href.toLowerCase().indexOf('weixin.liqunshop.com') == -1) {
+        if (getCookieVal("autoChargeTerminalRef") != "mobile") {
+            setCookie("autoChargeTerminalRef", "www", 1, "/", "liqunshop.com", "");
+            window.location.href = "http://weixin.liqunshop.com/?comefrom=www";
+        } else {
+        setTimeout(function () {
+            $('#mobileTerimal').css('display', 'block');
+        }, 5000);
+        }
+    }
+}
+function IsMobile() {
+    var thisOS = navigator.platform;
+    for (var i = 0; i < os_mobile.length; i++) {
+        if (thisOS.match(os_mobile[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+chargeTerminal();
+
+function changeTerminal(terminal) {
+    setCookie("autoChargeTerminalRef", terminal, 1, "/", "liqunshop.com", "");
+    if (terminal == "mobile") {
+        window.location.href = "http://www.liqunshop.com/";
+    } else if (terminal == "www") {
+        window.location.href = "http://weixin.liqunshop.com/?comefrom=www";
+    }
+}
+function getCookieVal(cookieName) {
+    var search = cookieName + "="
+    var returnvalue = "";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search);
+        if (offset != -1) {
+            offset += search.length
+            end = document.cookie.indexOf(";", offset);
+            if (end == -1)
+                end = document.cookie.length;
+            returnvalue = unescape(document.cookie.substring(offset, end))
+        }
+    }
+    return returnvalue;
+}
+function setCookie(name, value, expires, path, domain, secure) {
+    var today = new Date();
+    today.setTime(today.getTime());
+
+    if (expires) {
+        expires = expires * 1000 * 60 * 60;
+    }
+
+    var expires_date = new Date(today.getTime() + (expires));
+    document.cookie = name + "=" + escape(value) +
+            ((expires) ? ";expires=" + expires_date.toGMTString() : "") +
+            ((path) ? ";path=" + path : "") +
+            ((domain) ? ";domain=" + domain : "") +
+            ((secure) ? ";secure" : "");
+}

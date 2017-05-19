@@ -1,0 +1,83 @@
+﻿var dynamicValue = {
+    topImg:'http://promotion.liqunshop.com/Promotion/headImg/3565.jpg',  //顶部图片广告图片，不需要时为''
+    topHref: 'http://promotion.liqunshop.com/PromotionHtml/Promotion/3565.html', //顶部图片广告链接
+
+    logoImg: 'http://promotion.liqunshop.com/Promotion/headImg/3571.gif',//logo右侧广告图片
+    logoHref: 'http://promotion.liqunshop.com/PromotionHtml/Promotion/3571.html',//logo右侧广告链接
+
+    keyWords: [
+        
+        ["家电专场", "http://promotion.liqunshop.com/PromotionHtml/Promotion/3563.html"],
+        ["小家电大促", "http://promotion.liqunshop.com/PromotionHtml/Promotion/3562.html"],
+        ["数码专场", "http://promotion.liqunshop.com/PromotionHtml/Promotion/3564.html"],
+        ["美妆领券","http://promotion.liqunshop.com/PromotionHtml/Promotion/3551.html"],
+        ["母婴专场", "http://promotion.liqunshop.com/PromotionHtml/Promotion/3553.html"],
+        ["超市秒杀", "http://promotion.liqunshop.com/PromotionHtml/Promotion/3567.html"],
+        ["全球购秒杀", "http://promotion.liqunshop.com/PromotionHtml/Promotion/3559.html"]//最后一个不要加逗号
+    ], //搜索下方关键字
+
+    defaultKeyWord: '欧珀莱', //搜索框中的默认文字
+    backgroundImg: "http://promotion.liqunshop.com/Promotion/headImg/518bj.jpg", //.首页背景图片，不需要时为""
+    headHref: [
+    ["利群网商", "http://weixin.liqunshop.com/yundian/1.html"],
+	["全球购", "http://promotion.liqunshop.com/GlobalMall/index.html"],
+	["生鲜","http://promotion.liqunshop.com/Fresh"],
+    ["超市", "http://promotion.liqunshop.com/SuperMarket/Index.html"],    
+    ["母婴馆", "http://baby.liqunshop.com/Index.html"],
+    ["利群团", "http://promotion.liqunshop.com/GroupBuy/Index.html"],
+    ["医药", "http://www.lqyaopin.com/"],
+	["积分商城", "http://promotion.liqunshop.com/PointStore/Index.html"],//最后一个不要加逗号
+	["手机充值", "http://life.liqunshop.com"]
+    ],//头部导航链接
+
+    other: ''
+};
+//顶部图片
+function ad_top() {
+    if (dynamicValue.topImg != '') {
+        document.writeln("<a href='" +
+            (dynamicValue.topHref == '' ? 'javascript:void();' : dynamicValue.topHref) +
+            "' target='_blank'><img src='" + dynamicValue.topImg + "' style=' text-align:left;' /></a>");
+    }
+}
+//logo右侧图片
+function ad_logo() {
+    if (dynamicValue.logoImg != '') {
+        document.writeln("<a href='" +
+            (dynamicValue.logoHref == '' ? 'javascript:void();' : dynamicValue.logoHref) +
+            "' target='_blank'><img src='" + dynamicValue.logoImg + "' /></a>");
+    }
+}
+//绑定关键字
+function ad_keyword() {
+    for (i = 0; i < dynamicValue.keyWords.length; i++) {
+        document.writeln("<li><a href='" + dynamicValue.keyWords[i][1] + "' target='_blank'>" + dynamicValue.keyWords[i][0] + "</a></li>");
+    }
+}
+//搜索框默认值
+$(document).ready(function () {
+    $('#headSearchInput').val(dynamicValue.defaultKeyWord);
+    $('#headSearchInput').bind('focus', function () {
+        if ($(this).val() == dynamicValue.defaultKeyWord) {
+            $(this).val('');
+        }
+    }).bind('blur', function () {
+        if ($(this).val() == '') {
+            $(this).val(dynamicValue.defaultKeyWord);
+        }
+    });
+});
+//头部导航
+function head_href() {
+    for (i = 0; i < dynamicValue.headHref.length; i++) {
+        document.writeln("<li><a href='" + dynamicValue.headHref[i][1] + "' target='_blank'>" + dynamicValue.headHref[i][0] + "</a></li>");
+    }
+}
+
+/*首页背景*/
+$(document).ready(function () {
+    var bg = dynamicValue.backgroundImg;
+    if (bg != '') {
+        $("body").css("background", "url(" + bg + ") no-repeat scroll center top #fff");
+    }
+});

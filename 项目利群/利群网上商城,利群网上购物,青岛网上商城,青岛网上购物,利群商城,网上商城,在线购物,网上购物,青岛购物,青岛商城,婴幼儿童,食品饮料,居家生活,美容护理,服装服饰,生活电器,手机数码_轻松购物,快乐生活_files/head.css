@@ -1,0 +1,105 @@
+﻿.header { font-size: 12px; color: #777; z-index: 100; }
+.header * { text-align: left; margin: 0; }
+.header a, .header a:hover { text-decoration: none; }
+.header a { color: #777; }
+.header a img { border: none; }
+.header ul, .header ul { margin: 0; padding: 0; list-style: none; }
+
+.header .cbody { width: 1200px; margin: 0 auto; overflow: visible; }
+.header .fr { float: right; }
+.header .fl { float: left; }
+.header .relative { position: relative; }
+.header .absolute { position: absolute; }
+.header .hide { display: none; }
+.header .border { border: 1px solid #ccc; }
+.header .no-border { border: none; }
+.header .clear { clear: both; }
+
+.header-info { height: 24px; line-height: 24px; z-index: 101; }
+.header-info .light-name { color: #0770c1; }
+.header-info-right { float: right; z-index: 101; }
+.header-info-right li { float: left; margin: 0 6px; padding: 0 6px; }
+.header-info-right li.header-spe { margin: 0; padding: 0; line-height: 20px; color: #ccc; }
+.header-info-right li .header-icon { margin-top: 2px; margin-right: 5px; }
+.header-info-right .header-service { z-index: 101; }
+.header-info-right li.border { margin: 0 5px; margin-top: -1px; border-bottom: none; }
+.header-info-right .header-more-service { top: 23px; z-index: 101; left: -1px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; width: 100%; background-color: #fff; }
+.header-info-right .header-more-service li { float: left; margin: 0; padding: 0 6px; width: 100%; }
+.header-info-right .header-attend img { margin-top: 3px; float: left; margin-left: 5px; }
+.header-info-right .header-tdcode { position: relative; z-index: 101; }
+.header-info-right .header-code { position: absolute; top: 16px; left: -146px; _left: -188px; z-index: 101; }
+
+.header-search { height: 100px; margin: 5px 0; }
+.header-logo { float: left; width: 350px; margin-right: 3px; position: relative; }
+.header-logo img { margin-top: 15px; }
+.header-logo .header-logo-ad { position: absolute; top: 0; left: 190px; z-index: 2; }
+.header-search-area { float: left; margin-top: 25px; width: 540px; margin-left: 15px; }
+.header-search-main { border: 3px solid #fb5859; height: 35px; position: relative; }
+.header-search-main input, .header-search-main img { float: left; }
+.header-search-main #headSearchInput { border: none; height: 14px; padding: 10px 0; font-size: 14px; width: 420px; color: #aaa; text-align: left; }
+.header-search-main #headSearchBtn { width: 85px; height: 35px; background: url('../images/head/search_button.jpg'); border: none; cursor: pointer; }
+.header-search-main #headSearchTip { position: absolute; top: 37px; left: 28px; border: 1px solid #fb5859; z-index: 100; width: 420px; background-color: White; }
+.header-search-main #headSearchTip li { width: 420px; height: 25px; line-height: 25px; overflow: hidden; cursor: pointer; float: left; }
+.header-search-main #headSearchTip li span { padding: 0; border: 0; margin: 0; float: left; margin-left: 8px; }
+.header-search-word { height: 28px; line-height: 28px; }
+.header-search-word li { float: left; padding: 0 5px; }
+.header-search-word li.header-word-title { color: #555; }
+.header-search-cart { float: right; margin-top: 30px; width: 270px; }
+.header-search-cart #headCartCount { position: absolute; left: 15px; top: -10px; background: url(../images/head/cart_count.png) no-repeat; width: 21px; height: 21px; text-align: center; line-height: 21px; font-weight: bold; color: White; }
+/*2015-8-11 update*/
+.header-nav { height: 35px; }
+.header-nav li { text-align: left; font-size: 15px; color:#525252; float: left;  height: 35px; line-height: 37px; margin-left:42px;display:inline;}
+.header-nav li.red a:hover, .header-nav li.fover-red a,.header-nav li.fover-red a:visited{ color: #f13031;}
+.header-nav li a, .header-nav li a:visited{ color:#525252; font-size: 15px; }
+.header-nav #headAllClass { width: 190px; }
+.header-nav li.header-point { width: 87px; margin-right: 15px; float: right; }
+.header-nav li.header-point img { float: left; }
+/*2015-8-11 update*/
+
+/*2015-8-12 update*/
+.header-class-area { z-index: 100; }
+.header-class { width: 190px; position: absolute; left: 0; top: -35px; _top: -37px; z-index: 100; background: #c81622;}
+.header-class .header-class-title {background-color:#b1191b; height: 35px; line-height: 37px; color: White; text-align: center; font-size: 15px; font-weight: bold; float: left; width: 190px; }
+.header .header-class-tree { float: left; width: 190px; height: 451px; background: url('../images/head/memu_bg.jpg') left top no-repeat; position: relative; z-index: 100; display: none; }
+.header-class-tree li.header-first-class { height: 50px; z-index: 100; background: #c81622;}
+.header-class-tree li.header-first-class .class-title { padding: 0 10px 0 20px ; height: 50px; overflow: hidden; }
+.header-class-tree li.header-first-class .class-title div {color: White;  padding-left: 26px; overflow: hidden; background-image: url('../images/head/memu_bg.jpg'); background-repeat: no-repeat; }
+.header-class-tree li.header-first-class .class-title div.title{font-size: 15px;line-height:30px;height:30px;}
+.header-class-tree li.header-first-class .class-title div.title-pop{background-image:none;}
+.header-class-tree li.header-first-class .class-title div.title-pop a:link{font-size:12px;line-height:15px;text-decoration:none;color:White;}
+.header-class-tree li.header-first-class .class-title div.title-pop a:visited{font-size:12px;line-height:15px;text-decoration:none;color:White;}
+.header-class-tree li.header-first-class .class-title div.title-pop a:hover{font-size:12px;text-decoration:underline;color:White;}
+.header-class-tree li.header-first-class .class-title div span.arrow{font-size:12px; text-align:right;float:right;}
+.header-class-tree li.header-first-class .class-title div.no-border { border: none; }
+.header-class-tree li.header-first-class .class-title div.class-food { background-position: 0 0; }
+.header-class-tree li.header-first-class .class-title div.class-drink { background-position: 0 -55px; }
+.header-class-tree li.header-first-class .class-title div.class-bottle { background-position: 0 -105px; }
+.header-class-tree li.header-first-class .class-title div.class-paper { background-position: 0 -155px; }
+.header-class-tree li.header-first-class .class-title div.class-baby { background-position: 0 -205px; }
+.header-class-tree li.header-first-class .class-title div.class-mobile { background-position: 0 -252px; }
+.header-class-tree li.header-first-class .class-title div.class-tv { background-position: 0 -305px; }
+.header-class-tree li.header-first-class .class-title div.class-wifi { background-position: 0 -355px; }
+.header-class-tree li.header-first-class .class-title div.class-fashion { background-position: 0 -405px; }
+.header-class-tree li.cur { height: 50px; border: none;  background: #b1191b;}
+.header-class-tree li.cur .class-title {z-index:101;position:relative; height:50px; overflow:hidden; display:block; }
+.header-class-tree li.cur .class-title div { padding-left: 26px; overflow: hidden;  background-image: url('../images/head/memu_bg_cur.jpg');background-repeat: no-repeat; display:block; }
+
+
+.header-class-tree .header-class-pop { position: absolute; border: 1px solid #ec2e2e; top: 0px; left: 190px; z-index: 100; background:white none repeat scroll 0 0; overflow: hidden; padding-left: 15px; padding-top: 3px; width: 735px; min-height:445px;}
+.header-class-tree .header-class-pop .column { width: 245px; float: left; overflow: hidden; }
+.header-class-tree .header-class-pop .header-second-class { width: 235px; float: left; margin-right: 10px; margin-bottom: 10px; overflow: hidden; }
+.header-class-tree .header-class-pop .header-second-class div { overflow: hidden; clear: both; }
+.header-class-tree .header-class-pop .header-second-class .second-title { border-bottom: 1px solid black; height: 36px; line-height: 46px; font-size: 13px; font-weight: bold; margin-bottom: 5px; }
+.header-class-tree .header-class-pop .header-second-class .second-title a { color: #060000; }
+.header-class-tree .header-class-pop .header-second-class .second-title a.red { color: #ee2d30; }
+.header-class-tree .header-class-pop .header-second-class .second-title * { display: block; float: left; }
+.header-class-tree .header-class-pop .header-second-class .second-title .more { color: #505050; float: right; margin-right: 10px; }
+.header-class-tree .header-class-pop .header-second-class .header-third-class, .header-class-tree .header-class-pop .header-second-class .header-brand .brand-area { margin-left: -6px; _zoom: 1; _padding-bottom: 6px; }
+.header-class-tree .header-class-pop .header-second-class .header-third-class a, .header-class-tree .header-class-pop .header-second-class .header-brand a { display: inline-block; white-space: nowrap; margin-bottom: 6px; border-left: 1px solid #eee; padding: 0 6px; text-align: center; }
+.header-class-tree .header-class-pop .header-second-class .header-third-class a.red { color: #ee2d30; }
+.header-class-tree .header-class-pop .header-second-class .header-brand { border-top: 1px dotted #666; }
+.header-class-tree .header-class-pop .header-second-class .header-brand .brand-title { height: 27px; line-height: 27px; color: #535154; font-size: 13px; font-weight: bold; }
+.header-class-tree .header-class-pop .header-second-class .header-third-class a:hover, .brand-area a:hover{color:red;}
+.header-class-tree .header-class-pop-pd {  }
+/*2015-8-12 update*/
+

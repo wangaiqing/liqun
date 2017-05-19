@@ -1,0 +1,173 @@
+﻿var limiteTime; //限时购的时间倒计时控件集合；
+$(document).ready(function () {
+    /**精品促销**/
+    jQuery(".promotion-area").slide({
+        mainCell: ".promotion-list ul", autoPlay: 1, delayTime: 500, interTime: 5000, triggerTime: 150, autoPage: true, effect: "left", scroll: 4, vis: 4,
+        endFun: function () {
+            $('.promotion-list ul img.lazy').lazyload(getLazyLoadConfig($(".promotion-area")));
+        }
+    });
+
+
+
+    //限时购代码 更新代码--------start； 2015年7月15日10:34:20
+    //  InitLimitProduct();
+    /**限时购倒计时**/
+    //  limiteTime = $('.hot-product-tab .pdt-time');
+    limiteTime = $("#tab_ul .ending_time");
+    window.setInterval("chargeTime()", 1000);
+    //注册向前 按钮事件
+    $(".newAd_wrapper .middle_Ad .prevBtn").click(function () {
+        var indexNum = $("#tab_ul .currentDisplay").index();
+        var countTab = $("#tab_ul li").length;
+        if (indexNum != 0) {
+            JumpTo(indexNum - 1);
+        } else {
+            JumpTo(countTab - 1);
+        }
+    });
+    //注册向后 按钮事件
+    $(".newAd_wrapper .middle_Ad .nextBtn").click(function () {
+        var indexNum = $("#tab_ul .currentDisplay").index();
+        var countTab = $("#tab_ul li").length;
+        if (indexNum != (countTab - 1)) {
+            JumpTo(indexNum + 1);
+        } else {
+            JumpTo(0);
+        }
+        $('img.lazy', $('.middle_Ad ul li.middle_Ad_tab').eq(indexNum + 1)).trigger('appear');
+    });
+    //定时切换
+    var timerHandler = window.setInterval(function () {
+        $(".newAd_wrapper .middle_Ad .nextBtn").click();
+    }, 10000);
+    $(".middle_Ad").hover(function () {
+        window.clearInterval(timerHandler);
+    }, function () {
+        timerHandler = window.setInterval(function () {
+            $(".newAd_wrapper .middle_Ad .nextBtn").click();
+        }, 10000);
+    });
+    function JumpTo(index) {
+        var width = 797;
+        $("#tab_ul").stop().animate({ left: -(index * width) }, 1000);
+        $("#tab_ul li").eq(index).addClass("currentDisplay").siblings().removeClass("currentDisplay");
+    }
+    //限时购代码 更新代码----------end； 2015年7月15日10:34:20
+
+
+    /**楼层广告幻灯**/
+    $('.slideBox').each(function () {
+        $(this).slide({
+            mainCell: ".bd ul",
+            startFun: function (index, navObjSize, slider, titBox, conBox) {
+                $img = $('img.lazy', $(conBox)).eq(index);
+                if ($img.attr('src') == "http://image.liqunshop.com/images/space.gif") {
+                    $('img.lazy', $(conBox)).eq(index).trigger('appear');
+                }
+            }
+        });
+    });
+    $('.floor_ad').each(function () {
+        $(this).slide({
+            mainCell: ".bd ul",
+            startFun: function (index, navObjSize, slider, titBox, conBox) {
+                $img = $('img.lazy', $(conBox)).eq(index);
+                if ($img.attr('src') == "http://image.liqunshop.com/images/space.gif") {
+                    $('img.lazy', $(conBox)).eq(index).trigger('appear');
+                }
+            }
+        });
+    });
+
+    /**楼层商品切换**/
+    $('.floor_center').each(function () {
+        $(this).slide({
+            mainCell: ".floor_pro_info", titCell: ".floor_title li",
+            startFun: function (index, navObjSize, slider, titBox, conBox) {
+                $imgs = $('img.lazy', $(conBox).children().eq(index));
+                if ($imgs.eq($imgs.size() - 1).attr('src') == "http://image.liqunshop.com/images/space.gif") {
+                    $imgs.trigger('appear');
+                }
+            }
+        });
+    });
+
+    /**延迟加载**/
+    $('.flash-content img.lazy').lazyload(getLazyLoadConfig(window));
+    $('.mb10 img.lazy').lazyload(getLazyLoadConfig(window));
+});
+
+/**延迟加载**/
+var lazyLoadConfig = {
+    effect: 'show',
+    failure_limit: 10,
+    threshold: 10,
+    container: window,
+    data_attribute: "src",
+    skip_invisible: true
+};
+function getLazyLoadConfig(container, thre) {
+    var tempConfig = lazyLoadConfig;
+    tempConfig.container = container;
+    if (typeof thre != "undefined" && thre != null) {
+        tempConfig.threshold = thre;
+    }
+    return tempConfig;
+}
+
+//初始化倒计时 update 2015年7月15日10:33:08
+function InitLimitProduct() {
+    console.log('InitLimitProduct');
+    var $limitTimeProduct = $("#tab_ul .ending_time");
+    $limitTimeProduct.each(function () {
+        var $this = $(this);
+        var endTimeStr = $this.attr("endtime");
+        if (typeof endTimeStr == "undefined" || endTimeStr == "") {
+            return;
+        }
+        endTimeStr = endTimeStr.replace(/-/g, "/");
+        var endTime = new Date(endTimeStr);
+        window.setInterval(DisPlayRamainTime, 1000);
+        function DisPlayRamainTime() {
+            now = new Date();
+            totalLeftSecond = parseInt((endTime - now) / 1000);
+            if (totalLeftSecond >= 0) {
+                var day = Math.floor(totalLeftSecond / (3600 * 24));
+                var hh = Math.floor((totalLeftSecond - day * 3600 * 24) / 3600);
+                var mm = Math.floor((totalLeftSecond - day * 3600 * 24 - hh * 3600) / 60);
+                var ss = Math.floor(totalLeftSecond - day * 3600 * 24 - hh * 60 * 60 - mm * 60);
+                $('.days', $this).html(day.toString().length == 1 ? ("0" + day + "天") : day.toString() + "天");
+                $('.hours', $this).html(hh.toString().length == 1 ? ("0" + hh) : hh.toString());
+                $('.minites', $this).html(mm.toString().length == 1 ? ("0" + mm) : mm.toString());
+                $('.seconds', $this).html(ss.toString().length == 1 ? ("0" + ss) : ss.toString());
+            }
+        }
+    });
+}
+
+/**限时购倒计时**/
+function chargeTime() {
+    limiteTime.each(function () {
+        $this = $(this);
+        endTimeStr = $this.attr('endtime');
+        if (typeof endTimeStr == "undefined" || endTimeStr == "") {
+            return;
+        }
+        endTimeStr = endTimeStr.replace(/-/g, "/");
+        endTime = new Date(endTimeStr);
+
+        now = new Date();
+        totalLeftSecond = parseInt((endTime - now) / 1000);
+        if (totalLeftSecond >= 0) {
+            var day = Math.floor(totalLeftSecond / (3600 * 24));
+            var hh = Math.floor((totalLeftSecond - day * 3600 * 24) / 3600);
+            var mm = Math.floor((totalLeftSecond - day * 3600 * 24 - hh * 3600) / 60);
+            var ss = Math.floor(totalLeftSecond - day * 3600 * 24 - hh * 60 * 60 - mm * 60);
+            $('.days', $this).html(day.toString().length == 1 ? ("0" + day + "天") : day.toString() + "天");
+            $('.hours', $this).html(hh.toString().length == 1 ? ("0" + hh) : hh.toString());
+            $('.minites', $this).html(mm.toString().length == 1 ? ("0" + mm) : mm.toString());
+            $('.seconds', $this).html(ss.toString().length == 1 ? ("0" + ss) : ss.toString());
+        }
+    });
+}

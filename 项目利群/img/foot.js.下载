@@ -1,0 +1,91 @@
+﻿var width = 0;
+
+$(document).ready(function () {
+    /**右侧漂浮导航**/
+    $('.nav-right a').bind('mouseover', function () {
+        $img = $('img', $(this)).attr('src');
+        $img = $img.replace('.jpg', 'r.jpg');
+        $img = $img.replace('rr.jpg', 'r.jpg');
+        $('img', $(this)).attr('src', $img);
+    }).bind('mouseout', function () {
+        $img = $('img', $(this)).attr('src');
+        $img = $img.replace('r.jpg', '.jpg');
+        $('img', $(this)).attr('src', $img);
+    });
+
+    window.setTimeout(function () {
+        if ($("#doyoo_panel").length > 0) {
+            $("#doyoo_panel").css('display', 'none');
+        }
+        resizeRightNav();
+        rescrollRightNav();
+    }, 1000);
+
+    if ($("#doyoo_panel").length > 0) {
+        $("#doyoo_panel").click(function () {
+            $(this).css('display', 'none');
+            return;
+        });
+    }
+});
+
+function displaylooyu() {
+    if ($("#doyoo_panel").length > 0) {
+        $("#doyoo_panel").css("right", (width - 105) + "px");
+        $("#doyoo_panel").css('display', 'block');
+        $("#doyoo_panel").css('position', 'absolute');
+    }
+}
+
+$(window).scroll(function () {
+    rescrollRightNav();
+});
+$(window).resize(function () {
+    resizeRightNav();
+});
+
+/**右侧导航**/
+function resizeRightNav() {
+    var lwr = $(window).width();
+    width = (lwr - 1200) / 2 - 40;
+    if (width >= 0) {
+        $(".nav-right").css("right", width + "px");
+        $(".nav-right").css("display", "block");
+    } else {
+        $(".nav-right").css("display", "none");
+    }
+}
+function rescrollRightNav() {
+    var diffY = $(window).scrollTop();
+    if (diffY < 500) {
+        $(".nav-right").css("display", "none");
+        return;
+    }
+    $(".nav-right a").trigger('mouseout');
+    if (diffY > 1000 && diffY < 1440) {
+        $(".nav-right a").eq(1).trigger('mouseover');
+    } else if (diffY >= 1440 && diffY < 1880) {
+        $(".nav-right a").eq(2).trigger('mouseover');
+    } else if (diffY >= 1880 && diffY < 2330) {
+        $(".nav-right a").eq(3).trigger('mouseover');
+    } else if (diffY >= 2330 && diffY < 2670) {
+        $(".nav-right a").eq(4).trigger('mouseover');
+    } else if (diffY >= 2670 && diffY < 3110) {
+        $(".nav-right a").eq(5).trigger('mouseover');
+    } else if (diffY >= 3110 && diffY < 3590) {
+        $(".nav-right a").eq(6).trigger('mouseover');
+    }
+    $(".nav-right").css("display", "block");
+    var diffH = $(window).height() / 2.8;
+    var percent = diffY + diffH;
+    if (percent < 0) {
+        percent = Math.ceil(percent);
+    } else {
+        percent = Math.floor(percent);
+        var v = percent + "px";
+        $(".nav-right").css("top", v);
+        if ($("#doyoo_panel").length > 0) {
+            $("#doyoo_panel").css("top", v);
+        }
+    }
+}
